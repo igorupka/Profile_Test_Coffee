@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Два пончика и чашка кофе | Специализированная кофейня</title>
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Переменные для цветов */
+        :root {
+            --dark-coffee: #3E2723;
+            --medium-coffee: #5D4037;
+            --accent-color: #D84315;
+            --cream-bg: #FFF8E1;
+            --cream-light: #FFFFFF;
+            --text-color: #2D2D2D;
+            --transition: all 0.3s ease;
+        }
+
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--cream-bg);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-coffee);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Навигация */
+        nav {
+            background-color: rgba(62, 39, 35, 0.95);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Герой-секция */
+        header {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.5s;
+            animation-fill-mode: both;
+        }
+
+        /* О нас */
+        .about {
+            padding: 100px 0;
+            background-color: var(--cream-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark-coffee);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 20px 20px 0 var(--medium-coffee);
+        }
+
+        /* Меню */
+        .menu {
+            padding: 100px 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-item .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .menu-item h3 {
+            margin-bottom: 10px;
+            color: var(--medium-coffee);
+        }
+
+        .price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Контакты */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--dark-coffee);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .info-block h3 {
+            margin-bottom: 20px;
+            color: var(--cream-bg);
+            font-size: 1.5rem;
+        }
+
+        .info-block p {
+            margin-bottom: 10px;
+        }
+
+        /* Футер */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            background-color: #2d1b18;
+            color: #8d7d7a;
+            font-size: 0.9rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Для упрощения в одном файле */
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">🍩 Два пончика</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#menu">Меню</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главный раздел -->
+    <header id="home">
+        <div class="container hero-content">
+            <h1>Два пончика и чашка кофе</h1>
+            <p>Идеальный дуэт для вашего идеального утра</p>
+            <a href="#menu" class="btn">Посмотреть меню</a>
+        </div>
+    </header>
+
+    <!-- О компании -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Наша История</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Все началось с простой идеи: кофе — это хорошо, но кофе с парой свежих пончиков — это искусство.</p>
+                    <p>Мы открыли свои двери в 2015 году как маленькая семейная лавка. Сегодня «Два пончика и чашка кофе» — это место, где традиции встречаются с современным вкусом. Мы обжариваем зерна вручную и готовим пончики по секретному рецепту каждое утро.</p>
+                    <p>Заходите за своей порцией вдохновения и тепла!</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" alt="Интерьер кофейни">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Меню -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title">Наши хиты</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <span class="icon">☕</span>
+                    <h3>Раф Орех-Ирис</h3>
+                    <p>Нежный сливочный кофе с авторским сиропом из фундука.</p>
+                    <span class="price">320 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍩</span>
+                    <h3>Двойной Шоколад</h3>
+                    <p>Темный бельгийский шоколад снаружи и нежный мусс внутри.</p>
+                    <span class="price">180 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍯</span>
+                    <h3>Медовый Латте</h3>
+                    <p>Мягкий вкус цветочного меда с легкой ноткой корицы.</p>
+                    <span class="price">290 ₽</span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">✨</span>
+                    <h3>Комбо-сет</h3>
+                    <p>Любой классический кофе и два фирменных пончика на выбор.</p>
+                    <span class="price">550 ₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Ждем вас в гости</h2>
+            <div class="contact-grid">
+                <div class="info-block">
+                    <h3>Часы работы</h3>
+                    <p>Будни: 08:00 — 21:00</p>
+                    <p>Выходные: 10:00 — 22:00</p>
+                </div>
+                <div class="info-block">
+                    <h3>Где мы находимся</h3>
+                    <p>ул. Кофейная, д. 42</p>
+                    <p>Центральный район, г. Москва</p>
+                </div>
+                <div class="info-block">
+                    <h3>Связаться с нами</h3>
+                    <p>Телефон: +7 (999) 123-45-67</p>
+                    <p>Email: hello@twodonuts.ru</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 «Два пончика и чашка кофе». Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
